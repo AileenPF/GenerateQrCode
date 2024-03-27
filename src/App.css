@@ -1,0 +1,386 @@
+@import url("https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700;800;900&display=swap");
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: "Poppins", sans-serif;
+}
+
+:root {
+  --bg-body: #1f2122;
+  --bg-color: #1f2122;
+  --text-color: #ffffff;
+  --shadow: 6px 6px 12px #000, -6px -6px 12px #2f2f2f;
+  --bg-home: #494949;
+  --button-color: #ffffff;
+  --button-text-color: #1f2122;
+}
+
+[data-theme="light"] {
+  --bg-body: #e8e8e8;
+  --bg-color: #ffffff;
+  --text-color: #707070;
+  --shadow: 6px 6px 12px #c5c5c5, -6px -6px 12px #ffffff;
+  --bg-home: #dedede;
+  --button-color: #1f2122;
+  --button-text-color: #ffffff;
+}
+
+body {
+  background-color: var(--bg-body);
+  color: var(--text-color);
+  display: grid;
+  place-items: center;
+  padding: 2rem;
+  font-size: 1.2rem;
+  color: var(--blue);
+  transition: var(--cubic-bezier);
+}
+
+.container {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.theme-box {
+  display: grid;
+  place-items: center;
+  place-content: center;
+  gap: 1;
+  padding-inline: 1rem;
+  padding-bottom: 2rem;
+
+  .theme {
+    border-radius: 50px;
+    background-color: var(--bg-color);
+    box-shadow: var(--shadow);
+    cursor: pointer;
+  }
+
+  .theme-button {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: var(--text-color);
+    width: 50px;
+    height: 50px;
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+  }
+
+  .theme-button ion-icon {
+    font-size: larger;
+    cursor: pointer;
+  }
+
+  .theme .theme-button:hover {
+    box-shadow: var(--shadow);
+    transition: all 0.2s ease-in-out;
+    cursor: pointer;
+    background-color: var(--bg-color);
+    border-radius: 50px;
+  }
+}
+
+.wrapper {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  margin: 25px 25px;
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+
+  .title {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 0 auto;
+    color: var(--text-color);
+    font-size: 40px;
+    font-weight: bolder;
+    text-align: center;
+  }
+
+  .input-url {
+    position: relative;
+    width: 100%;
+    height: 50px;
+    border-bottom: 2px solid var(--text-color);
+    margin: 30px 0;
+
+    label {
+      position: absolute;
+      top: 50%;
+      left: 5px;
+      transform: translateY(-50%);
+      font-size: 1em;
+      color: var(--text-color);
+      font-weight: 500;
+      pointer-events: none;
+      transition: 0.5s;
+    }
+
+    .icon {
+      position: absolute;
+      right: 8px;
+      font-size: 1.5em;
+      color: var(--text-color);
+      line-height: 57px;
+    }
+
+    input {
+      width: 100%;
+      height: 100%;
+      background: transparent;
+      border: none;
+      outline: none;
+      font-size: 1em;
+      color: var(--text-color);
+      font-weight: 600;
+      padding: 0 50px 0 5px;
+    }
+
+    input:-webkit-autofill {
+      -webkit-box-shadow: 0 0 0 30px var(--bg-color) inset !important;
+      box-shadow: 0 0 0 30px var(--bg-color) inset !important;
+      -webkit-text-fill-color: var(--text-color) !important;
+    }
+
+    input:focus ~ label,
+    input:valid ~ label {
+      top: -5px;
+    }
+
+    input:focus,
+    input:valid ~ .wrapper {
+      border-color: var(--text-color);
+    }
+
+    .clear-input-url {
+      position: absolute;
+      right: 50px;
+      font-size: 1.5em;
+      color: var(--text-color);
+      line-height: 57px;
+      border: none;
+      background-color: #00000000;
+      cursor: pointer;
+    }
+  }
+
+  .input-picker-box {
+    display: flex;
+    align-items: center;
+    color: var(--text-color);
+    .input-picker {
+      width: 10%;
+      margin: 10px 10px;
+      border: 2px solid var(--text-color);
+      border-radius: 5px;
+      label {
+        display: flex;
+        text-wrap: nowrap;
+        margin: 10px;
+        color: var(--text-color);
+      }
+    }
+
+    .color {
+      position: absolute;
+      right: 83%;
+      z-index: 999;
+    }
+  }
+
+  .input-image-box {
+    color: var(--text-color);
+    .input-image {
+      color: #ffffff;
+      text-wrap: nowrap;
+    }
+    .input-file {
+      height: 500px;
+      overflow: hidden;
+      overflow-y: scroll;
+      overflow-x: hidden;
+    }
+
+    .box-image {
+      background-color: var(--button-color);
+      margin: 15px 0;
+      display: flex;
+      align-items: center;
+      border-radius: 1rem 1rem 1rem 1rem;
+      border: 2px dashed var(--bg-body);
+      overflow: hidden;
+      transition: all 0.2s ease-out;
+    }
+
+    .box-image .image img {
+      transform: scale(1);
+      transition: all 0.2s ease-out;
+    }
+
+    .box-image:hover .image img {
+      transform: scale(1.1);
+      transition: all 0.2s ease-out;
+    }
+
+    .box-input-image {
+      height: 100px;
+      width: 250px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      margin: 10px;
+      background-color: #212121;
+      cursor: pointer;
+    }
+
+    .box-image .icon {
+      font-size: 30px;
+      color: var(--button-text-color);
+      cursor: pointer;
+      margin: 8px;
+    }
+
+    .box-image .file-upload-text {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      cursor: pointer;
+    }
+
+    .box-image .file-upload-text span {
+      font-weight: 500;
+      color: var(--button-text-color);
+    }
+
+    .box-image input {
+      display: none;
+    }
+
+    .checkbox {
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      margin: 0 10px;
+      border: 2px solid var(--text-color);
+      border-radius: 5px;
+      background-color: transparent;
+      display: inline-block;
+      position: relative;
+      margin-right: 10px;
+      cursor: pointer;
+    }
+
+    .checkbox:before {
+      content: "";
+      background-color: var(--text-color);
+      display: block;
+      position: absolute;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%) scale(0);
+      width: 10px;
+      height: 10px;
+      border-radius: 3px;
+      transition: all 0.3s ease-in-out;
+    }
+
+    .checkbox:checked:before {
+      transform: translate(-50%, -50%) scale(1);
+    }
+  }
+
+  button.button {
+    display: flex;
+    width: 99%;
+    height: 50px;
+    align-items: center;
+    justify-content: center;
+    margin: 10px auto;
+    color: var(--button-text-color);
+    background-color: var(--button-color);
+    border-radius: 10px;
+    border: none;
+    font-weight: 600;
+    font-size: large;
+    cursor: pointer;
+    transition: all ease-in-out 0.2s;
+  }
+
+  button.button:hover {
+    width: 100%;
+    box-shadow: 0px 0px 10px 2px var(--text-color);
+    transition: all ease-in-out 0.2s;
+  }
+
+  .success-msg {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    margin: 25px auto;
+    height: 50px;
+    background-color: #c3ffc6;
+    border-radius: 10px;
+    border: 2px solid #84ff8a;
+    color: #005e1c;
+
+    .message {
+      display: flex;
+      align-items: center;
+      font-size: 18px;
+      margin: 10px;
+    }
+
+    .message ion-icon {
+      font-size: 22px;
+      margin-right: 5px;
+    }
+
+    span.close ion-icon {
+      display: flex;
+      align-items: center;
+      font-size: 25px;
+      margin-right: 10px;
+      cursor: pointer;
+      color: #1f2122;
+      outline: none;
+      border: none;
+      background-color: #00000000;
+    }
+  }
+}
+
+.card {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 25px;
+  margin: 25px 25px;
+  background-color: var(--bg-color);
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: var(--shadow);
+
+  .qr-box {
+    border-radius: 25px;
+    overflow: hidden;
+    margin: 25px;
+  }
+
+  .qr-text {
+    text-align: center;
+    color: var(--text-color);
+    max-width: 300px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+}
